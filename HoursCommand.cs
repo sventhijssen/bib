@@ -62,14 +62,14 @@ namespace bib
                 if (hours.Length == 0)
                     continue;
 
-                Console.WriteLine("Ma\t" + library.hours[0].begin + " - " + library.hours[0].einde);
-                Console.WriteLine("Do\t" + library.hours[1].begin + " - " + library.hours[1].einde);
-                Console.WriteLine("Wo\t" + library.hours[2].begin + " - " + library.hours[2].einde);
-                Console.WriteLine("Do\t" + library.hours[3].begin + " - " + library.hours[3].einde);
-                Console.WriteLine("Vr\t" + library.hours[4].begin + " - " + library.hours[4].einde);
-                Console.WriteLine("Za\t" + library.hours[5].begin + " - " + library.hours[5].einde);
-                Console.WriteLine("Zo\t" + library.hours[6].begin + " - " + library.hours[6].einde);
-                Console.WriteLine();
+                for(int i = 0; i < 7; i++)
+                {
+
+                    Console.Write(Enum.GetName(typeof(DayOfWeek), (i+1) % 7).Substring(0,3) + "\t" + library.hours[i].begin + " - " + library.hours[i].einde);
+                    if (DateTime.Today.DayOfWeek == (DayOfWeek)((i + 1) % 7))
+                        Console.Write(" <-");
+                    Console.WriteLine();
+                }
             }
             return false;
         }
